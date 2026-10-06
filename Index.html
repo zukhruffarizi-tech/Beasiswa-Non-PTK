@@ -1,160 +1,96 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <base target="_top">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      body { 
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        padding: 15px; 
-        background-color: #f0f2f5; 
-        margin: 0;
-      }
-      h2 { 
-        color: #1a73e8; 
-        text-align: center; 
-        font-size: 1.4rem; 
-        margin-bottom: 5px; 
-      }
-      .header-info {
-        text-align: center;
-        margin-bottom: 25px;
-      }
-      .copyright {
-        color: #444;
-        font-weight: 600;
-        font-size: 0.95rem;
-      }
-      .last-update {
-        color: #777;
-        font-size: 0.85rem;
-        margin-top: 5px;
-        font-style: italic;
-      }
-      .container { 
-        display: flex; 
-        flex-direction: column; 
-        gap: 15px; 
-        max-width: 600px; 
-        margin: 0 auto; 
-      }
-      .card { 
-        background: white; 
-        border-radius: 12px; 
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
-        padding: 15px; 
-        overflow: hidden; 
-      }
-      .card-header { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        border-bottom: 2px solid #f0f2f5; 
-        padding-bottom: 10px; 
-        margin-bottom: 12px; 
-      }
-      .card-title { 
-        font-size: 1.1rem; 
-        font-weight: bold; 
-        color: #333; 
-        margin: 0; 
-      }
-      .card-subtitle { 
-        font-size: 0.85rem; 
-        color: #1a73e8; 
-        background: #e8f0fe; 
-        padding: 4px 10px; 
-        border-radius: 20px; 
-        font-weight: 600;
-      }
-      .req-item { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center;
-        margin-bottom: 8px; 
-        font-size: 0.9rem; 
-      }
-      .req-label { 
-        color: #555; 
-        flex: 1;
-        padding-right: 10px;
-      }
-      .req-status { 
-        font-weight: bold; 
-        padding: 4px 8px; 
-        border-radius: 50%; 
-        font-size: 1.1rem; 
-        text-align: center;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .status-belum { color: #d93025; background-color: #fce8e6; }
-      .status-sudah { color: #1e8e3e; background-color: #e6f4ea; }
-      .loading { text-align: center; color: #666; font-style: italic; margin-top: 50px; }
-      .error-msg { text-align: center; color: #d93025; background: #fce8e6; padding: 15px; border-radius: 8px; margin-top: 20px; }
-    </style>
-  </head>
-  <body>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelengkapan Berkas Beasiswa Non-PTK</title>
+  <style>
+    /* CSS TEMA GLASSMORPHISM IOS (Sama seperti sebelumnya, tapi langsung di GitHub) */
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      padding: 20px 15px; 
+      margin: 0;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      background-image: 
+        radial-gradient(at 0% 0%, hsla(253,16%,7%,0.07) 0, transparent 50%), 
+        radial-gradient(at 50% 0%, hsla(225,39%,30%,0.07) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, hsla(339,49%,30%,0.07) 0, transparent 50%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+    h2 { color: #1c1c1e; text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; }
+    .header-info { text-align: center; margin-bottom: 30px; }
+    .copyright { color: #3a3a3c; font-weight: 600; font-size: 0.95rem; }
+    .last-update { color: #636366; font-size: 0.85rem; margin-top: 5px; }
+    .container { display: flex; flex-direction: column; gap: 18px; max-width: 600px; margin: 0 auto; }
     
-    <h2>Kelengkapan Berkas Beasiswa Non-PTK</h2>
+    .card { 
+      background: rgba(255, 255, 255, 0.4); 
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.6); 
+      border-radius: 20px; 
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07); 
+      padding: 18px; overflow: hidden; 
+    }
+    .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 12px; margin-bottom: 15px; }
+    .card-title { font-size: 1.15rem; font-weight: 700; color: #1c1c1e; margin: 0; }
+    .card-subtitle { font-size: 0.8rem; color: #007aff; background: rgba(0,122,255,0.1); padding: 5px 12px; border-radius: 20px; font-weight: 600; }
+    .req-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 0.95rem; }
+    .req-label { color: #3a3a3c; flex: 1; font-weight: 500; }
+    .req-status { font-weight: bold; border-radius: 50%; font-size: 1rem; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+    .status-belum { color: #ff3b30; background-color: rgba(255,59,48,0.15); border: 1px solid rgba(255,59,48,0.2); }
+    .status-sudah { color: #34c759; background-color: rgba(52,199,89,0.15); border: 1px solid rgba(52,199,89,0.2); }
     
-    <div class="header-info">
-      <div class="copyright">&copy; Zukhruf Farizi</div>
-      <div class="last-update" id="last-update">Update: Menghitung waktu...</div>
+    .loading { text-align: center; font-size: 1.1rem; color: #007aff; font-weight: 600; padding: 40px; }
+    .loading-spinner { display: inline-block; width: 30px; height: 30px; border: 3px solid rgba(0,122,255,0.3); border-radius: 50%; border-top-color: #007aff; animation: spin 1s ease-in-out infinite; margin-bottom: 10px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .error-msg { text-align: center; color: #ff3b30; background: rgba(255,59,48,0.1); padding: 15px; border-radius: 15px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <h2>Kelengkapan Berkas Beasiswa Non-PTK</h2>
+  
+  <div class="header-info">
+    <div class="copyright">&copy; Zukhruf Farizi</div>
+    <div class="last-update" id="last-update">Menghubungkan ke server...</div>
+  </div>
+  
+  <div class="container" id="data-container">
+    <div class="loading">
+      <div class="loading-spinner"></div><br>
+      Mengambil Data Terbaru...
     </div>
-    
-    <div class="container" id="data-container">
-      <div class="loading">Memuat data dari Spreadsheet...</div>
-    </div>
+  </div>
 
-    <script>
-      function setUpdateTime() {
-        var now = new Date();
-        var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-        var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-        
-        var namaHari = hari[now.getDay()];
-        var tanggal = now.getDate();
-        var namaBulan = bulan[now.getMonth()];
-        var tahun = now.getFullYear();
-        
-        var jam = String(now.getHours()).padStart(2, '0');
-        var menit = String(now.getMinutes()).padStart(2, '0');
-        var detik = String(now.getSeconds()).padStart(2, '0');
-        
-        var formatWaktu = namaHari + ', ' + tanggal + ' ' + namaBulan + ' ' + tahun + ' Pukul ' + jam + ':' + menit + ':' + detik;
-        document.getElementById('last-update').innerHTML = 'Update: ' + formatWaktu;
-      }
+  <script>
+    function setUpdateTime() {
+      var now = new Date();
+      var hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      var bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+      var formatWaktu = hari[now.getDay()] + ', ' + now.getDate() + ' ' + bulan[now.getMonth()] + ' ' + now.getFullYear() + ' Pukul ' + String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0') + ':' + String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('last-update').innerHTML = 'Update: ' + formatWaktu;
+    }
 
-      // Memanggil fungsi dari sisi server (Code.gs)
-      google.script.run
-        .withSuccessHandler(showData)
-        .withFailureHandler(showError) // Menangani error fatal dari server
-        .getBeasiswaData();
+    // 1. GANTI URL DI BAWAH INI DENGAN LINK /exec ANDA!
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxS7v5koFviOeWOq_8plYIJKL5QOsZQpT8ySmR-_w33hzpKs7erviARB361BKuGl4g1/exec";
 
-      function showError(error) {
-        document.getElementById('data-container').innerHTML = 
-          '<div class="error-msg"><strong>Terjadi Kesalahan (Server):</strong><br>' + error.message + '</div>';
-        document.getElementById('last-update').innerHTML = 'Gagal memuat waktu update.';
-      }
-
-      function showData(response) {
+    // 2. JavaScript murni menggunakan Fetch API (Bebas dari blokir Iframe)
+    fetch(SCRIPT_URL)
+      .then(response => response.json())
+      .then(result => {
         var container = document.getElementById('data-container');
         
-        // Cek jika ada error dari fungsi di Code.gs
-        if (response.error) {
-           container.innerHTML = '<div class="error-msg"><strong>Kesalahan:</strong><br>' + response.error + '</div>';
-           document.getElementById('last-update').innerHTML = 'Gagal memuat data.';
-           return;
+        if(result.status === "error") {
+          container.innerHTML = '<div class="error-msg"><strong>Gagal mengambil data:</strong><br>' + result.message + '</div>';
+          document.getElementById('last-update').innerHTML = 'Gagal memuat waktu update.';
+          return;
         }
 
-        var data = response.data;
-
+        var data = result.data;
         if (!data || data.length <= 1) {
-          container.innerHTML = '<div class="loading">Tidak ada data ditemukan.</div>';
+          container.innerHTML = '<div class="error-msg">Tidak ada data siswa ditemukan.</div>';
           setUpdateTime();
           return;
         }
@@ -162,50 +98,36 @@
         var headers = data[0]; 
         var html = '';
 
+        // Looping mulai dari baris 1 (karena baris 0 adalah Header)
         for (var i = 1; i < data.length; i++) {
           var row = data[i];
+          var no = row[0]; var nama = row[1]; var kelas = row[2];
           
-          var no = row[0];
-          var nama = row[1];
-          var kelas = row[2];
-          
-          html += '<div class="card">';
-          html += '  <div class="card-header">';
-          html += '    <h3 class="card-title">' + no + '. ' + nama + '</h3>';
-          html += '    <span class="card-subtitle">' + kelas + '</span>';
-          html += '  </div>';
-          
-          html += '  <div class="card-body">';
+          html += '<div class="card"><div class="card-header">';
+          html += '<h3 class="card-title">' + no + '. ' + nama + '</h3>';
+          html += '<span class="card-subtitle">' + kelas + '</span></div><div class="card-body">';
 
+          // Looping dokumen persyaratan
           for (var j = 3; j < headers.length; j++) {
             var reqName = headers[j];
-            var status = row[j] ? row[j].trim() : '';
-            
-            var cssClass = '';
-            var displayIcon = status; 
+            var status = row[j] ? row[j].trim().toLowerCase() : '';
+            var cssClass = '', displayIcon = row[j]; 
 
-            if (status.toLowerCase() === 'belum') {
-               cssClass = 'status-belum';
-               displayIcon = '&#10006;'; 
-            } else if (status.toLowerCase() === 'sudah') {
-               cssClass = 'status-sudah';
-               displayIcon = '&#10004;'; 
-            }
+            if (status === 'belum') { cssClass = 'status-belum'; displayIcon = '&#10006;'; } 
+            else if (status === 'sudah') { cssClass = 'status-sudah'; displayIcon = '&#10004;'; }
             
-            html += '    <div class="req-item">';
-            html += '      <span class="req-label">' + reqName + '</span>';
-            html += '      <span class="req-status ' + cssClass + '">' + displayIcon + '</span>';
-            html += '    </div>';
+            html += '<div class="req-item"><span class="req-label">' + reqName + '</span>';
+            html += '<span class="req-status ' + cssClass + '">' + displayIcon + '</span></div>';
           }
-          
-          html += '  </div>';
-          html += '</div>'; 
+          html += '</div></div>'; 
         }
         
         container.innerHTML = html;
-        // Panggil fungsi update waktu setelah tabel sukses dibuat
-        setUpdateTime(); 
-      }
-    </script>
-  </body>
+        setUpdateTime();
+      })
+      .catch(error => {
+        document.getElementById('data-container').innerHTML = '<div class="error-msg"><strong>Koneksi Terputus:</strong><br>Pastikan internet lancar dan URL Script sudah benar.</div>';
+      });
+  </script>
+</body>
 </html>
